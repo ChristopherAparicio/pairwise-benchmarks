@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+command -v gitleaks >/dev/null || { echo 'Install Gitleaks before pushing.' >&2; exit 1; }
+exec gitleaks git --redact --no-banner --log-opts="--all"

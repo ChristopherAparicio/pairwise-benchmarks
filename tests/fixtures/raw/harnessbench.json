@@ -1,0 +1,71 @@
+{
+  "general": {
+    "tasks": 2,
+    "configs": [
+      {
+        "model": "GPT-5.6 Sol",
+        "harness": "OpenCode",
+        "score": 50,
+        "r1": 25,
+        "r08": 25,
+        "cost_usd": 0.1,
+        "tokens_k": 1,
+        "local_model": false
+      },
+      {
+        "model": "GPT-5.6 Sol",
+        "harness": "Claude Code",
+        "score": 50,
+        "r1": 25,
+        "r08": 25,
+        "cost_usd": 0.1,
+        "tokens_k": 1,
+        "local_model": false
+      },
+      {
+        "model": "GPT-5.6 Sol",
+        "harness": "Hermes",
+        "score": 50,
+        "r1": 25,
+        "r08": 25,
+        "cost_usd": 0.1,
+        "tokens_k": 1,
+        "local_model": false
+      },
+      {
+        "model": "GPT-5.6 Terra",
+        "harness": "OpenCode",
+        "score": 50,
+        "r1": 25,
+        "r08": 25,
+        "cost_usd": 0.1,
+        "tokens_k": 1,
+        "local_model": false
+      },
+      {
+        "model": "Opus 4.8",
+        "harness": "Claude Code",
+        "score": 50,
+        "r1": 25,
+        "r08": 25,
+        "cost_usd": 0.1,
+        "tokens_k": 1,
+        "local_model": false
+      },
+      {
+        "model": "Qwen3.8-27B",
+        "harness": "Hermes",
+        "score": 50,
+        "r1": 25,
+        "r08": 25,
+        "cost_usd": 0.1,
+        "tokens_k": 1,
+        "local_model": true
+      }
+    ]
+  },
+  "multimodal": {
+    "tasks": 1,
+    "configs": []
+  }
+}

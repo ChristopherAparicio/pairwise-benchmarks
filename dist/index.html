@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pairwise — Model & Harness Observatory</title>
+  <meta name="description" content="A local preview of a sourced catalog of model–harness evaluations, grouped by protocol.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2322463d'/%3E%3Cpath d='M9 10h6v6H9zm8 6h6v6h-6z' fill='%23d5ef8e'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=7c7360507a41">
+  <script src="data.js?v=9b0d774f509e" defer></script><script src="app.js?v=9de5cc20ef48" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Pairwise home"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>pairwise<span class="brand-dot">.</span></a>
+    <nav aria-label="Main navigation"><button class="nav-link active" data-nav="explore">Explore</button><button class="nav-link" data-nav="sources">Sources <span>03</span></button><button class="nav-link" id="method-open">Methodology <span aria-hidden="true">↗</span></button></nav>
+    <span class="local-badge"><span></span>Local preview</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy"><div class="eyebrow"><span class="tiny-grid" aria-hidden="true">▦</span> MODELS × HARNESSES · SOURCED DATA</div><h1>The right model.<br>The <span class="hero-emphasis">right harness.</span></h1><p>Explore tested configurations, their performance<br class="desktop-break"> and the evidence behind every result.</p><div class="hero-meta"><span class="live-dot"></span>Public snapshots collected on October 28, 2026<span class="meta-separator">/</span><span>No benchmarks rerun</span></div></div>
+      <div class="hero-visual" aria-hidden="true"><div class="visual-caption">PERFORMANCE TAKES TWO</div><div class="orbit-grid"></div><div class="visual-node model-node"><span class="node-icon">✳</span><span>Model</span><small>the capability</small></div><div class="visual-connector"><span></span><b>×</b><span></span></div><div class="visual-node harness-node"><span class="node-icon">⌘</span><span>Harness</span><small>the execution</small></div><div class="visual-bottom"><span></span>A pairing. A context. Evidence.</div></div>
+    </section>
+
+    <section class="catalog-stats" aria-label="Coverage in this preview"><div><strong id="stat-evaluations">—</strong><span>Published evaluations</span></div><div><strong id="stat-models">—</strong><span>Models & variants</span></div><div><strong id="stat-harnesses">—</strong><span>Harnesses observed</span></div><div><strong>3<span class="stat-mini"> Sources</span></strong><span>Provenance preserved</span><div class="source-dots"><i>RH</i><i>OB</i><i>HB</i></div></div></section>
+
+    <section class="workspace" id="explore">
+      <div class="results-area">
+        <div class="explorer-heading"><div><div class="eyebrow">THE CATALOG</div><h2><span id="catalog-title">Explore the</span> <span class="heading-tail"><span id="catalog-subject">pairings</span><span class="count-badge" id="filtered-count">—</span></span></h2></div><div class="export-wrap"><button id="export-toggle" class="button secondary" aria-expanded="false" aria-controls="export-menu"><span aria-hidden="true">↓</span> Export <span class="chevron" aria-hidden="true">⌄</span></button><div id="export-menu" class="export-menu" hidden><button data-export="json">Filtered results · JSON</button><button data-export="csv">Filtered results · CSV</button></div></div></div>
+        <div class="view-bar"><div class="tabs" role="tablist" aria-label="Catalog view"><button class="tab active" role="tab" id="tab-results" aria-selected="true" aria-controls="view-results" data-view="results"><span aria-hidden="true">☷</span> Results</button><button class="tab" role="tab" id="tab-matrix" aria-selected="false" aria-controls="view-matrix" data-view="matrix"><span aria-hidden="true">▦</span> Matrix</button><button class="tab" role="tab" id="tab-pairs" aria-selected="false" aria-controls="view-pairs" data-view="pairs"><span aria-hidden="true">⌘</span> Pairs</button><button class="tab" role="tab" id="tab-sources" aria-selected="false" aria-controls="view-sources" data-view="sources"><span aria-hidden="true">◉</span> Sources</button></div><span class="view-hint" id="view-hint">One protocol at a time</span></div>
+        <section class="filters filter-panel" id="filter-panel" aria-label="Filter results">
+          <div class="filter-heading"><div><h3>Find your pairing</h3><p>Choose from the list or type to add chips. Empty fields include everything.</p></div><div class="filter-actions"><button id="reset-filters" class="text-button">Reset</button></div></div>
+          <div class="filter-fields">
+            <div class="filter-grid primary-filters">
+              <div class="filter-field choice-field" id="model"><label for="model-input">Models <span class="label-help" title="Models are grouped by their developer. Type a provider or model name to find them.">by provider</span></label><div class="choice-box"><div id="model-chips" class="choice-chips"></div><div class="choice-entry"><input id="model-input" role="combobox" aria-autocomplete="list" aria-controls="model-options" aria-expanded="false" autocomplete="off" placeholder="Find a model or provider…"><button type="button" data-open-choice="model" aria-label="Show model options">⌄</button></div></div><ul id="model-options" class="choice-options" role="listbox" aria-label="Models" aria-multiselectable="true" hidden></ul></div>
+              <div class="filter-field choice-field" id="harness"><label for="harness-input">Harnesses</label><div class="choice-box"><div id="harness-chips" class="choice-chips"></div><div class="choice-entry"><input id="harness-input" role="combobox" aria-autocomplete="list" aria-controls="harness-options" aria-expanded="false" autocomplete="off" placeholder="Add a harness…"><button type="button" data-open-choice="harness" aria-label="Show harness options">⌄</button></div></div><ul id="harness-options" class="choice-options" role="listbox" aria-label="Harnesses" aria-multiselectable="true" hidden></ul></div>
+              <div class="filter-field choice-field" id="publisher"><label for="publisher-input">Model providers <span class="label-help" title="Who develops the model: OpenAI, Anthropic (Claude), Google, etc. The inference host, such as Bedrock, is a separate field in the record.">ⓘ</span></label><div class="choice-box"><div id="publisher-chips" class="choice-chips"></div><div class="choice-entry"><input id="publisher-input" role="combobox" aria-autocomplete="list" aria-controls="publisher-options" aria-expanded="false" autocomplete="off" placeholder="Add a provider…"><button type="button" data-open-choice="publisher" aria-label="Show model provider options">⌄</button></div></div><ul id="publisher-options" class="choice-options" role="listbox" aria-label="Model providers" aria-multiselectable="true" hidden></ul></div>
+            </div>
+            <p class="session-status" id="save-status" role="status"></p>
+            <div class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="search" type="search" placeholder="Search within results…" aria-label="Search within results"><kbd>/</kbd></div>
+            <details class="more-filters"><summary>Advanced filters <span>Benchmark, source & category</span></summary>
+              <div class="filter-grid">
+                <div class="filter-field"><label for="pair">Exact model × harness pairing</label><select id="pair"><option value="">All pairings</option></select></div>
+                <div class="filter-field"><label for="category">Task category</label><select id="category"><option value="">All categories</option></select></div>
+              </div>
+              <div class="filter-grid protocol-panel" id="protocol-panel">
+                <div class="filter-field"><label for="source">Benchmark source</label><select id="source"><option value="">All sources</option></select></div>
+                <div class="filter-field"><label for="protocol">Benchmark & protocol</label><select id="protocol"></select></div>
+                <div class="filter-field" id="metric-field" hidden><label for="metric">Score to display</label><select id="metric" aria-describedby="metric-help"></select><p class="filter-help" id="metric-help">Changes the score column for this benchmark. It does not filter observations.</p></div>
+              </div>
+              <p class="filter-help">Model providers are model developers, not inference hosts. Each benchmark uses its reported score; a score selector appears only when it offers several measures. A missing pairing means it has not been observed here.</p>
+            </details>
+          </div>
+          <div id="active-filters" class="active-filters" aria-live="polite"></div>
+        </section>
+        <div class="context-note" id="context-note"><span class="note-icon" aria-hidden="true">ⓘ</span><p></p></div>
+        <div id="view-results" role="tabpanel" aria-labelledby="tab-results"></div>
+        <div id="view-matrix" role="tabpanel" aria-labelledby="tab-matrix" hidden></div>
+        <div id="view-pairs" role="tabpanel" aria-labelledby="tab-pairs" hidden></div>
+        <div id="view-sources" role="tabpanel" aria-labelledby="tab-sources" hidden></div>
+        <div class="results-footnote" id="results-footnote"><span class="live-dot"></span><p>Results reported by their sources. A recent collection date does not mean a recent benchmark.</p></div>
+      </div>
+    </section>
+    <section class="reading-strip"><div class="strip-icon" aria-hidden="true">↗</div><div><h2>The score is a starting point.</h2><p>Versions, budgets, samples and methods matter when choosing.</p></div><button class="text-button" id="method-bottom">Understand the comparisons <span aria-hidden="true">↗</span></button></section>
+  </main>
+  <footer><a class="brand footer-brand" href="#">pairwise<span class="brand-dot">.</span></a><p>An observatory of pairings and their evidence.</p><span>Local prototype · 28.10.2026</span></footer>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <dialog id="detail-dialog" class="detail-dialog"><button class="dialog-close" aria-label="Close record">×</button><div id="detail-content"></div></dialog>
+  <dialog id="method-dialog" class="method-dialog"><button class="dialog-close" aria-label="Close methodology">×</button><div class="eyebrow">READING THE DATA</div><h2>Compare what is comparable.</h2><p>Pairwise brings published results together. This preview runs no new benchmarks and names no universal winner.</p><div class="method-step"><b>01</b><div><h3>Context before ranking</h3><p>Tables stay separate by source and protocol. A score of 75% on two different suites does not mean the same thing.</p></div></div><div class="method-step"><b>02</b><div><h3>Unknowns stay visible</h3><p>A dash means “not reported”. It never becomes zero cost, a recent version, or assumed compatibility.</p></div></div><div class="method-step"><b>03</b><div><h3>More than one way to succeed</h3><p>Mean scores may include partial credit. Full credit measures completely validated deliverables. Costs and durations retain their original scope.</p></div></div><div class="method-step"><b>04</b><div><h3>Evidence you can inspect</h3><p>Every record links to its publication. Observations are imported, not independently reproduced. Check the original source for harness versions and detailed conditions missing from the export.</p></div></div><p class="method-footer">Frozen data for this local preview. No automated monitoring is enabled.</p></dialog>
+</body>
+</html>

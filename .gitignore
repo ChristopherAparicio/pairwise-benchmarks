@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+/data/raw/
+/dist/data.json
+/dist/data.js
+/Pairwise.html
+/data-verification.json
+/.local/
+
